@@ -8,12 +8,15 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+// Setup connection for database
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://heroku_rg3dpg4f:3trhj8bvk2g9lp3ocvtbltgvp9@ds259711.mlab.com:59711/heroku_rg3dpg4f";
 
+// route the main assets used by html file throughout all routes
 app.use(express.static('assets'));
 console.log("Finished Building static files for web page!");
 
+// render the main page to '/home' route
 app.use("/home", (req, res) => {
  res.sendFile(__dirname + "/upload.html");
 });
@@ -24,6 +27,9 @@ app.listen(PORT, () => {
 });
 
 
+/*
+  * Inserts the entire given array of orders into collection 'orders'
+*/
 app.post('/insertorders', function (req, res) {
   var orders = req.body.orders;
 
@@ -32,7 +38,7 @@ app.post('/insertorders', function (req, res) {
     console.log('Connected to Database! Inserting orders');
 
     var db = client.db("heroku_rg3dpg4f");
-    db.collection("customers").drop(function(err, delOK) {
+    db.collection("orders").drop(function(err, delOK) {
       if (err) throw err;
       if (delOK) console.log("Collection deleted");
 
@@ -49,6 +55,10 @@ app.post('/insertorders', function (req, res) {
   res.end('INSERTED ALL ORDERS');
 });
 
+
+/*
+  * Retrieves all orders in the collection 'orders'
+*/
 app.get('/getorders', function (req, res) {
   MongoClient.connect(url, function (err, client) {
     if (err) return console.log(err);
