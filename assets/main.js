@@ -41,7 +41,7 @@ $(function() {
     insertOrders = (orders) => {
       $.ajax({
         type: "POST",
-        url: "http://localhost:3000/insertorders",
+        url: "https://file-upload-server1.herokuapp.com/insertorders",
         data: orders,
         success: function (data) {
           alert("Success");
@@ -56,7 +56,7 @@ $(function() {
     getOrders = (callback) => {
       $.ajax({
         type: "GET",
-        url: "http://localhost:3000/getorders",
+        url: "https://file-upload-server1.herokuapp.com/getorders",
         data: {},
         success: function (res) {
           orders = res.result;
