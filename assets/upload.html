@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Data Flow</title>
+
+    <!-- Package/dependencies -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  </head>
+
+<body>
+  <div class="flexBasicCol">
+    <div class="flexBasicCol card">
+      <p class="pageHeader">Input a JSON file with order details</p>
+      <input type="file" id="inputFile" value="Import" />
+    </div>
+
+    <div class="flexBasicCol card" id="table">
+      <div class="flexBasicRow headRow">
+        <p class="col">customer_id</p>
+        <p class="col">order_no</p>
+        <p class="col">part_id</p>
+        <p class="col">parent_part</p>
+        <p class="col">price</p>
+        <p class="col">qty</p>
+        <p class="col">paid</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Importing JS files after for efficient render -->
+  <script src="main.js"></script>
+</body>
+</html>
