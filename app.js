@@ -38,15 +38,9 @@ app.post('/insertorders', function (req, res) {
     console.log('Connected to Database! Inserting orders');
 
     var db = client.db("heroku_rg3dpg4f");
-    db.collection("orders").drop(function(err, delOK) {
-      if (err) throw err;
-      if (delOK) console.log("Collection deleted");
-
-      db.collection('orders').insertMany(orders, function (err, result) {
-        if (err) return console.log(err);
-        return console.log("INSERTED ALL ORDERS");
-      });
-
+    db.collection('orders').insertMany(orders, function (err, result) {
+      if (err) return console.log(err);
+      return console.log("INSERTED ALL ORDERS");
     });
 
     client.close();
